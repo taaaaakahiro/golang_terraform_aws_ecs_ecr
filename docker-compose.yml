@@ -5,5 +5,5 @@ services:
     build: .
     env_file:
       - .env
-    expose:
-      - 80801
+    ports:
+      - 8080:8080
