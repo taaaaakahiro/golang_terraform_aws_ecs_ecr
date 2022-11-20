@@ -1,9 +1,9 @@
 version: '3'
 
 services:
-  example-api:
+  example-api-golang:
     build: .
     env_file:
       - .env
-    ports:
-      - "8080:8080"
+    expose:
+      - 80801
