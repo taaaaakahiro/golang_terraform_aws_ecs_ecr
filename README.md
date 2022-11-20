@@ -1,0 +1,1 @@
+# golang-terraform-aws-ecs-ecr
