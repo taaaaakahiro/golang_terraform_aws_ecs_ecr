@@ -11,12 +11,13 @@ resource "aws_ecs_service" "ecs_service" {
   name            = "golang-terraform-aws-ecs-ecr"
   cluster         = aws_ecs_cluster.ecs_cluster.id
   task_definition = aws_ecs_task_definition.ecs_task_definition.arn
-  desired_count   = 3
-  iam_role        = aws_iam_role.test_iam_role.arn
+  desired_count   = 1
+  launch_type     = "FARGATE"
  
-  ordered_placement_strategy {
-    type  = "binpack"
-    field = "cpu"
+  network_configuration {
+    assign_public_ip = true
+    security_groups  = [aws_security_group.sg.id]
+    subnets          = [aws_subnet.pub_subnet1.id, aws_subnet.pub_subnet2.id]
   }
 }
 resource "aws_ecs_task_definition" "ecs_task_definition" {
@@ -28,9 +29,16 @@ resource "aws_ecs_task_definition" "ecs_task_definition" {
   container_definitions    = <<TASK_DEFINITION
 [
   {
-    "name": "iis",
-    "image": "mcr.microsoft.com/windows/servercore/iis",
-    "essential": true
+    "name": "httpd-container",
+    "image": "httpd:latest",
+    "essential": true,
+    "memory": 128,
+    "portMappings": [
+      {
+        "protocol": "tcp",
+        "containerPort": 80
+      }
+    ]
   }
 ]
 TASK_DEFINITION
