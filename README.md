@@ -8,6 +8,5 @@
  
 ## build
 ```
-$ docker build --platform=linux/amd64 -t [タグ名] .
 $ docker build --platform=linux/amd64 -t terraform-fargate-practice-ecr .
 ```
