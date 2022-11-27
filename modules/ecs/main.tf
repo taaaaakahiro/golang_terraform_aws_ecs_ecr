@@ -26,17 +26,18 @@ resource "aws_ecs_task_definition" "ecs_task_definition" {
   network_mode             = "awsvpc"
   cpu    = 256
   memory = 512
+  execution_role_arn       = aws_iam_role.ecs_task_execution_role.arn
   container_definitions    = <<TASK_DEFINITION
 [
   {
     "name": "httpd-container",
-    "image": "httpd:latest",
+    "image": "413937037843.dkr.ecr.ap-northeast-1.amazonaws.com/demo-ecr:latest",
     "essential": true,
     "memory": 128,
     "portMappings": [
       {
         "protocol": "tcp",
-        "containerPort": 80
+        "containerPort": 8080
       }
     ]
   }
@@ -81,9 +82,30 @@ resource "aws_iam_role" "test_iam_role" {
         Effect = "Allow"
         Sid    = ""
         Principal = {
-          Service = "ec2.amazonaws.com"
+          Service = "ecs-tasks.amazonaws.com"
         }
       },
     ]
   })
+}
+
+data "aws_iam_policy_document" "assume_role" {
+  statement {
+    actions = ["sts:AssumeRole"]
+
+    principals {
+      type        = "Service"
+      identifiers = ["ecs-tasks.amazonaws.com"]
+    }
+  }
+}
+
+resource "aws_iam_role" "ecs_task_execution_role" {
+  name               = "MyEcsTaskRole"
+  assume_role_policy = data.aws_iam_policy_document.assume_role.json
+}
+
+resource "aws_iam_role_policy_attachment" "amazon_ecs_task_execution_role_policy" {
+  role       = aws_iam_role.ecs_task_execution_role.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
 }
