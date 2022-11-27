@@ -6,3 +6,8 @@
  - https://github.com/telia-oss/terraform-aws-ecs-fargate  
  - https://github.com/katsuya-n/pub_ecs_laravel_infra/blob/release-1.0.0/modules/ecs/main.tf
  
+## build
+```
+$ docker build --platform=linux/amd64 -t [タグ名] .
+$ docker build --platform=linux/amd64 -t terraform-fargate-practice-ecr .
+```

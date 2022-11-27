@@ -5,7 +5,7 @@ resource "aws_subnet" "pub_subnet1" {
   availability_zone = "ap-northeast-1a"
 
   tags = {
-    Name = "${var.env}-subnet1a-${var.name}"
+    Name = "${var.env}-pub-subnet1a-${var.name}"
   }
 }
 
@@ -15,6 +15,6 @@ resource "aws_subnet" "pub_subnet2" {
   availability_zone = "ap-northeast-1c"
 
   tags = {
-    Name = "${var.env}-subnet1c-${var.name}"
+    Name = "${var.env}-pub-subnet1c-${var.name}"
   }
 }
