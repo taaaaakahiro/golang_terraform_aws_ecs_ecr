@@ -1,5 +1,5 @@
 resource "aws_security_group" "alb" {
-  name        = "${var.name}-sg-alb"
+  name        = "${local.env}-sg-alb"
   description = "sg alb"
   vpc_id      = aws_vpc.vpc.id
 
@@ -20,12 +20,12 @@ resource "aws_security_group" "alb" {
   }
 
   tags = {
-    Name = "${var.name}-sg-alb"
+    Name = "${local.env}-sg-alb"
   }
 }
 
 resource "aws_security_group" "container" {
-  name        = "${var.name}-sg-container"
+  name        = "${local.env}-sg-container"
   description = "sg container"
   vpc_id      = aws_vpc.vpc.id
 
@@ -46,12 +46,12 @@ resource "aws_security_group" "container" {
   }
 
   tags = {
-    Name = "${var.name}-sg-container"
+    Name = "${local.env}-sg-container"
   }
 }
 
 resource "aws_security_group" "vpce" {
-  name        = "${var.name}-sg-vpce"
+  name        = "${local.env}-sg-vpce"
   description = "sg vpce"
   vpc_id      = aws_vpc.vpc.id
 
@@ -72,6 +72,6 @@ resource "aws_security_group" "vpce" {
   }
 
   tags = {
-    Name = "${var.name}-sg-vpce"
+    Name = "${local.env}-sg-vpce"
   }
 }

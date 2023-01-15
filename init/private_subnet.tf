@@ -5,7 +5,7 @@ resource "aws_subnet" "private_container_1a" {
   map_public_ip_on_launch = true
 
   tags = {
-    Name = "${var.name}-pri-container-1a"
+    Name = "${local.env}-pri-container-1a"
   }
 }
 
@@ -16,6 +16,6 @@ resource "aws_subnet" "private_container_1c" {
   map_public_ip_on_launch = true
 
   tags = {
-    Name = "${var.env}-pri-container-1c"
+    Name = "${local.env}-pri-container-1c"
   }
 }

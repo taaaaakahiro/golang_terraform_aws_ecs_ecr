@@ -2,7 +2,7 @@ resource "aws_route_table" "private_1a" {
   vpc_id = aws_vpc.vpc.id
 
   tags = {
-    Name = "${var.name}-private-route-table-1a"
+    Name = "${local.env}-private-route-table-1a"
   }
 }
 
@@ -15,7 +15,7 @@ resource "aws_route_table" "private_1c" {
   vpc_id = aws_vpc.vpc.id
 
   tags = {
-    Name = "${var.name}-private-route-table-1b"
+    Name = "${local.env}-private-route-table-1b"
   }
 }
 
@@ -28,7 +28,7 @@ resource "aws_route_table_association" "private_1c" {
 resource "aws_route_table" "public_alb_1a" {
   vpc_id = aws_vpc.vpc.id
   tags = {
-    Name = "${var.name}-public-alb-route-table-1a"
+    Name = "${local.env}-public-alb-route-table-1a"
   }
   route {
     cidr_block = "0.0.0.0/0"
@@ -46,7 +46,7 @@ resource "aws_route_table_association" "public_alb_1a" {
 resource "aws_route_table" "public_alb_1b" {
   vpc_id = aws_vpc.vpc.id
   tags = {
-    Name = "${var.name}-public-alb-route-table-1b"
+    Name = "${local.env}-public-alb-route-table-1b"
   }
   route {
     cidr_block = "0.0.0.0/0"
