@@ -24,14 +24,15 @@ resource "aws_ecs_task_definition" "backend" {
     {
       name   = "app"
       image  = "413937037843.dkr.ecr.ap-northeast-1.amazonaws.com/terraform-fargate-practice-ecr:latest"
+      
       cpu    = 128
       memory = 256
 
       essential = true
       portMappings = [
         {
-          containerPort = 80
-          hostPort      = 80
+          containerPort = 8080
+          # hostPort      = 80
         }
       ]
     }
