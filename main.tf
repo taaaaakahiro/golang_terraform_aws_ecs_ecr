@@ -9,6 +9,15 @@ module "ecs" {
   backend_ecr_repository_url   = module.ecr.backend_ecr_repository_url
   subnet_container_1a_id       = module.network.subnet_container_1a_id
   subnet_container_1c_id       = module.network.subnet_container_1c_id
-  sg_container_id              = data.terraform_remote_state.demo.sg_container_id
+  sg_container_id              = data.terraform_remote_state.init.sg_container_id
+}
 
+data "terraform_remote_state" "init" {
+  backend = "s3"
+ 
+  config = {
+    bucket = "terraform-example-tkoide"
+    key    = "golang-terraform-aws-ecs-ecr/init/terraform.tfstate"
+    region = "ap-northeast-1"
+  }
 }
