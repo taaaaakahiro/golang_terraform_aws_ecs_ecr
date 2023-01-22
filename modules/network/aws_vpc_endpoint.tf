@@ -1,6 +1,6 @@
 resource "aws_vpc_endpoint" "ecr_api" {
   tags = {
-    Name = "${local.env}-vpce-ecr-api"
+    Name = "${var.env}-vpce-ecr-api"
   }
   vpc_id            = aws_vpc.vpc.id
   service_name      = "com.amazonaws.ap-northeast-1.ecr.api"
@@ -19,7 +19,7 @@ resource "aws_vpc_endpoint" "ecr_api" {
 
 resource "aws_vpc_endpoint" "ecr_dkr" {
   tags = {
-    Name = "${local.env}-vpce-ecr-dkr"
+    Name = "${var.env}-vpce-ecr-dkr"
   }
   vpc_id            = aws_vpc.vpc.id
   service_name      = "com.amazonaws.ap-northeast-1.ecr.dkr"
@@ -38,7 +38,7 @@ resource "aws_vpc_endpoint" "ecr_dkr" {
 
 resource "aws_vpc_endpoint" "s3" {
   tags = {
-    Name = "${local.env}-vpce-s3"
+    Name = "${var.env}-vpce-s3"
   }
   vpc_id            = aws_vpc.vpc.id
   service_name      = "com.amazonaws.ap-northeast-1.s3"
@@ -58,7 +58,7 @@ resource "aws_vpc_endpoint_route_table_association" "private_1c" {
 
 resource "aws_vpc_endpoint" "ecr_logs" {
   tags = {
-    Name = "${local.env}-vpce-ecr-dkr"
+    Name = "${var.env}-vpce-ecr-dkr"
   }
   vpc_id            = aws_vpc.vpc.id
   service_name      = "com.amazonaws.ap-northeast-1.logs"
