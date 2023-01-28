@@ -26,8 +26,11 @@ func main() {
 }
 
 func hello(w http.ResponseWriter, r *http.Request, listenSpec string, start string, hostname string) {
-	fmt.Fprintf(w, "Hello world!\n"+
-		"Listening on: %s\n"+
-		"Started on: %s\n"+
-		"Hostname: %s\n", listenSpec, start, hostname)
+	w.WriteHeader(200)
+	/*
+		fmt.Fprintf(w, "Hello world!\n"+
+			"Listening on: %s\n"+
+			"Started on: %s\n"+
+			"Hostname: %s\n", listenSpec, start, hostname)
+	*/
 }
