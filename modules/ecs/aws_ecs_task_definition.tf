@@ -13,6 +13,12 @@ resource "aws_ecs_task_definition" "backend" {
       image  = "413937037843.dkr.ecr.ap-northeast-1.amazonaws.com/dev-ecr:latest"
       cpu    = 128
       memory = 256
+      healthcheck = {
+        command = [ "CMD-SHELL", "curl -f http://127.0.0.1:9090/health || exit 1" ]
+        interval = 20
+        retries = 2
+        timeout = 5
+      }
 
       essential = true
       portMappings = [
