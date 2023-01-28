@@ -19,7 +19,7 @@ resource "aws_ecs_service" "backend" {
 
   load_balancer {
     target_group_arn = var.alb_tg_blue_arn
-    container_name   = "app"
-    container_port   = 80
+    container_name   = "dev-"
+    container_port   = 8080
   }
 }
