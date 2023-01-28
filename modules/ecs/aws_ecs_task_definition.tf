@@ -17,7 +17,7 @@ resource "aws_ecs_task_definition" "backend" {
       essential = true
       portMappings = [
         {
-          containerPort = 80
+          containerPort = 8080
           hostPort      = 80
         }
       ]
