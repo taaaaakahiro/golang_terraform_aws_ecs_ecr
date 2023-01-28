@@ -9,7 +9,7 @@ resource "aws_ecs_task_definition" "backend" {
 
   container_definitions = jsonencode([
     {
-      name   = "${var.env}-"
+      name   = "${var.env}-app"
       image  = "413937037843.dkr.ecr.ap-northeast-1.amazonaws.com/dev-ecr:latest"
       cpu    = 128
       memory = 256
