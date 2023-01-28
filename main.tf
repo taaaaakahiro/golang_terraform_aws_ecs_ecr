@@ -10,6 +10,16 @@ module "ecs" {
   subnet_container_1a_id       = data.terraform_remote_state.init.outputs.subnet_container_1a_id
   subnet_container_1c_id       = data.terraform_remote_state.init.outputs.subnet_container_1c_id
   sg_container_id              = data.terraform_remote_state.init.outputs.sg_container_id
+  alb_tg_blue_arn              = module.alb.alb_tg_blue_arn
+}
+
+module "alb" {
+  source       = "./modules/alb"
+  env          = local.env
+  sg_alb_id    = data.terraform_remote_state.init.outputs.sg_alb_id
+  subnet_1a_id = data.terraform_remote_state.init.outputs.subnet_alb_1a_id
+  subnet_1b_id = data.terraform_remote_state.init.outputs.subnet_alb_1b_id
+  vpc_id       = data.terraform_remote_state.init.outputs.vpc_id
 }
 
 data "terraform_remote_state" "init" {

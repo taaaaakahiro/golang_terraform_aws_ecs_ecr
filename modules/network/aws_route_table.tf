@@ -39,7 +39,7 @@ resource "aws_route_table" "public_alb_1a" {
 
 
 resource "aws_route_table_association" "public_alb_1a" {
-  subnet_id      = aws_subnet.pub_subnet1.id
+  subnet_id      = aws_subnet.public_alb_1a.id
   route_table_id = aws_route_table.public_alb_1a.id
 }
 
@@ -55,6 +55,6 @@ resource "aws_route_table" "public_alb_1b" {
 }
 
 resource "aws_route_table_association" "public_alb_1b" {
-  subnet_id      = aws_subnet.pub_subnet2.id
+  subnet_id      = aws_subnet.public_alb_1b.id
   route_table_id = aws_route_table.public_alb_1b.id
 }

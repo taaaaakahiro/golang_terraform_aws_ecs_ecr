@@ -6,6 +6,7 @@ resource "aws_ecs_service" "backend" {
   desired_count       = 2
   launch_type         = "FARGATE"
   scheduling_strategy = "REPLICA"
+  health_check_grace_period_seconds = 60
 
   network_configuration {
     assign_public_ip = false
@@ -16,9 +17,9 @@ resource "aws_ecs_service" "backend" {
     ]
   }
 
-  # load_balancer {
-  #   target_group_arn = var.alb_tg_blue_arn
-  #   container_name   = "app"
-  #   container_port   = 80
-  # }
+  load_balancer {
+    target_group_arn = var.alb_tg_blue_arn
+    container_name   = "app"
+    container_port   = 80
+  }
 }

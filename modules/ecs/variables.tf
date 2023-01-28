@@ -15,3 +15,4 @@ variable "sg_container_id" {}
 variable "subnet_container_1a_id" {}
 variable "subnet_container_1c_id" {}
 variable "account_id" {}
+variable "alb_tg_blue_arn" {}
