@@ -21,5 +21,6 @@ $ terraform apply # ./golang-terraform-aws-ecs-ecr
  
 ## build
 ```
-$ docker build --platform=linux/amd64 -t terraform-fargate-practice-ecr .
+$ docker build --platform=linux/amd64 -t dev-ecr .
+$ docker tag dev-ecr:latest <account id>.dkr.ecr.ap-northeast-1.amazonaws.com/dev-ecr:latest
 ```

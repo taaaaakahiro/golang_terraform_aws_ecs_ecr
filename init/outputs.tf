@@ -1,4 +1,6 @@
-
+output "backend_ecr_repository_url" {
+  value = module.ecr.backend_ecr_repository_url
+}
 
 output "subnet_container_1a_id"{
   value = module.vpc.private_container_1a_id
