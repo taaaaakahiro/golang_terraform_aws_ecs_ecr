@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	port := flag.Int("port", 8080, "HTTP port number")
+	port := flag.Int("port", 80, "HTTP port number")
 	flag.Parse()
 
 	listenSpec := fmt.Sprintf(":%d", *port)
@@ -21,7 +21,7 @@ func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		hello(w, r, listenSpec, start, hostname)
 	})
-	http.ListenAndServe(listenSpec, nil)
+	http.ListenAndServe(":80", nil)
 
 }
 
