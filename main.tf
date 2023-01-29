@@ -11,6 +11,7 @@ module "ecs" {
   subnet_container_1c_id       = data.terraform_remote_state.init.outputs.subnet_container_1c_id
   sg_container_id              = data.terraform_remote_state.init.outputs.sg_container_id
   alb_tg_blue_arn              = module.alb.alb_tg_blue_arn
+  container-definition-file    = file("./container_definition.json")
 }
 
 module "alb" {
