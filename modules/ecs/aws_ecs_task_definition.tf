@@ -6,7 +6,9 @@ resource "aws_ecs_task_definition" "backend" {
   memory                   = 512
   task_role_arn            = "arn:aws:iam::${var.account_id}:role/ecsTaskExecutionRole"
   execution_role_arn       = "arn:aws:iam::${var.account_id}:role/ecsTaskExecutionRole"
+  // jsonファイルを使う場合
   container_definitions    = var.container-definition-file
+  // codeで書く場合
   # container_definitions = jsonencode([
   #   {
   #     name   = "${var.env}-app"
