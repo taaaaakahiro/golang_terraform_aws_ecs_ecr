@@ -1,7 +1,7 @@
 data "aws_caller_identity" "current" {}
 
 module "ecs" {
-  source                       = "./modules/ecs"
+  source                       = "../modules/ecs"
   env                          = local.env
   service                      = local.service
   function                     = local.function
@@ -15,7 +15,7 @@ module "ecs" {
 }
 
 module "alb" {
-  source       = "./modules/alb"
+  source       = "../modules/alb"
   env          = local.env
   sg_alb_id    = data.terraform_remote_state.init.outputs.sg_alb_id
   subnet_1a_id = data.terraform_remote_state.init.outputs.subnet_alb_1a_id
@@ -23,12 +23,3 @@ module "alb" {
   vpc_id       = data.terraform_remote_state.init.outputs.vpc_id
 }
 
-data "terraform_remote_state" "init" {
-  backend = "s3"
- 
-  config = {
-    bucket = "terraform-example-tkoide"
-    key    = "golang-terraform-aws-ecs-ecr/init/terraform.tfstate"
-    region = "ap-northeast-1"
-  }
-}
