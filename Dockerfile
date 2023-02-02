@@ -1,5 +1,5 @@
 # Build Go Server Binary
-FROM golang:1.17.1-buster
+FROM golang:1.17.1-buster AS build
 
 ARG GITHUB_TOKEN=local
 ARG VERSION=local
@@ -10,10 +10,11 @@ RUN echo "machine github.com login ${GITHUB_TOKEN}" > ~/.netrc
 WORKDIR /project
 
 # Only copy go.mod and go.sum, and download go mods separately to support layer caching
-COPY ./go.* ./
+COPY ./main.go ./go.mod ./
 RUN go mod download
-
-COPY . ./
 RUN go build  -o ./bin/server .
 
-CMD ["./bin/server"]
+FROM debian:buster
+COPY --from=build /project/bin/server /bin/server
+
+CMD ["/bin/server"]
