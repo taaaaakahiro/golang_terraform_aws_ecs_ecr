@@ -29,8 +29,7 @@
     $ terraform apply # ./golang-terraform-aws-ecs-ecr/dev
     ```
 
-4. access
-    access to ALB DSN
+4. access to ALB DSN
 
 ### Reference
  - https://github.com/grisha/hello-go-ecs-terraform/blob/master/tf/main.tf  
