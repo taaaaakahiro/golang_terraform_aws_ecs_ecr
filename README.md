@@ -1,6 +1,6 @@
 # golang-terraform-aws-ecs-ecr
 
-### run
+### Run
 1. init
     ```sh
     $ cd .init #./golang-terraform-aws-ecs-ecr/init
@@ -38,5 +38,5 @@
  - https://github.com/katsuya-n/pub_ecs_laravel_infra/blob/release-1.0.0/modules/ecs/main.tf
  - https://blog.not75743.com/post/ecs_private/
 
-## wiki
+## Wiki
 - https://github.com/taaaaakahiro/golang-terraform-aws-ecs-ecr/wiki/%5B%E5%8B%95%E4%BD%9C%E7%A2%BA%E8%AA%8D%5DECS-on-Fargate
