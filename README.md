@@ -1,13 +1,19 @@
 # golang-terraform-aws-ecs-ecr
 
 ### Run
-1. init
+1. setup credencial
     ```sh
-    $ cd .init #./golang-terraform-aws-ecs-ecr/init
+    $ export AWS_ACCESS_KEY_ID=<AWS_ACCESS_KEY_ID>
+    $ export AWS_SECRET_ACCESS_KEY=<AWS_SECRET_ACCESS_KEY>
+    $ export AWS_DEFAULT_REGION=<AWS_DEFAULT_REGION>
+    ```
+2. init
+    ```sh
+    $ cd ./init #./golang-terraform-aws-ecs-ecr/init
     $ terraform apply
     ```
 
-2. build & push
+3. build & push
     ```sh
     # login
     $ aws ecr get-login-password --region <REGION> | docker login --username AWS --password-stdin <ACCOUNT_ID>.dkr.ecr.ap-northeast-1.amazonaws.com
@@ -23,13 +29,13 @@
     $ docker push <ACCOUNT_ID>.dkr.ecr.ap-northeast-1.amazonaws.com/dev-ecr:latest
     ```
 
-3. dev
+4. dev
     ```sh
     $ cd ./dev
     $ terraform apply # ./golang-terraform-aws-ecs-ecr/dev
     ```
 
-4. access to ALB DSN
+5. access to ALB DSN
 
 ### Reference
  - https://github.com/grisha/hello-go-ecs-terraform/blob/master/tf/main.tf  
