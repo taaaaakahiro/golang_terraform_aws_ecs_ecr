@@ -16,7 +16,8 @@
 3. build & push
     ```sh
     # login
-    $ aws ecr get-login-password --region <REGION> | docker login --username AWS --password-stdin <ACCOUNT_ID>.dkr.ecr.ap-northeast-1.amazonaws.com
+    $ aws ecr get-login-password --region <REGION> --profile <profile_name> | docker login --username AWS --password-stdin <ACCOUNT_ID>.dkr.ecr.ap-northeast-1.amazonaws.com
+
 
     # build
     $ docker build --platform=linux/amd64 -t dev-ecr . # by Apple Silicon
