@@ -15,6 +15,7 @@ RUN go mod download
 RUN go build  -o ./bin/server .
 
 FROM debian:buster
+RUN apt update && apt install -y curl
 COPY --from=build /project/bin/server /bin/server
 
 CMD ["/bin/server"]

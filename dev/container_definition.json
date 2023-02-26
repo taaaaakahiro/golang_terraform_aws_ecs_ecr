@@ -5,8 +5,8 @@
       "essential": true,
       "network_mode": "awsvpc",
       "healthCheck": {
-        "command": ["CMD-SHELL", "curl http://127.0.0.1/ || exit 1"],
-        "interval": 20,
+        "command": ["CMD-SHELL", "curl -f http://127.0.0.1/ || exit 1"],
+        "interval": 30,
         "timeout": 5,
         "start period": 0
       },
